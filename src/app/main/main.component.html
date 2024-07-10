@@ -1,0 +1,30 @@
+<div>
+    <label for="sort-by-selector">Sort by</label>
+    <select id="sort-by-selector" #chosenCriteria (change)="sortBy(chosenCriteria.value)">
+        <option selected ></option>
+        <option value="ranking">Ranking</option>
+        <option value="date">Release date</option>
+        <option value="popularity">Popularity</option>
+    </select>
+    <button (click)="changeArrowColor()" class="arrowBtn">
+        <i *ngIf="!toggle" class="fa-solid fa-up-long"></i>
+        <i *ngIf="toggle" class="fa-solid fa-up-long" style="color: #74C0FC;"></i>
+        <i *ngIf="toggle" class="fa-solid fa-down-long"></i>
+        <i *ngIf="!toggle" class="fa-solid fa-down-long" style="color: #74C0FC;"></i>
+    </button>
+    <button (click)="getToken()">GET TOKEN</button>
+    <button (click)="getId()">GET ID</button>
+    <button (click)="getWatchList()">GET WatchList</button>
+    <button (click)="addMovie()">add Movie</button>
+    
+    
+    <div *ngFor="let item of movies">
+        <h1> {{item.title}} </h1>
+        <img src='https://image.tmdb.org/t/p/w200{{item.poster_path}}'>
+        <p>Rates: {{item.vote_count}}</p>
+        <p>Year: {{item.release_date}}</p>
+        <a style="cursor:pointer" class="link-primary"(click)="goToDescription(item)">See desc</a> 
+    </div>
+</div>
+
+
